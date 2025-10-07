@@ -4,8 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useEffect } from 'react';
 
 function App() {
+  const [char, setChar] = useState({});
   const [count, setCount] = useState(0)
   const myName = useRef();
   useGSAP(() => {
@@ -49,12 +51,16 @@ function App() {
     })
 
     gsap.to(myName.current, {
-      textShadow: "0 0 40px #ffffffdd",  // Center scale
+      textShadow: "0 0 40px 10px #ffffffff",  // Center scale
       ease: "power3.out",        // Correct GSAP easing
       duration: 0.8,
       delay: 2.8,
     })
   })
+
+  useEffect(() => {
+    
+  }, [])
 
   return (
     <>
@@ -73,13 +79,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

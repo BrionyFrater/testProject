@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #0f0f0f;
 
    font-synthesis: none; 
   text-rendering: optimizeLegibility; 
@@ -27,7 +27,7 @@
 
 .yo {
   display: inline-block;
-  font-size: 3rem;
+  font-size: 3.5rem;
 }
 
 .yo > h1{
