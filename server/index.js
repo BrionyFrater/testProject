@@ -1,8 +1,11 @@
 const express = require("express");
+const cors = require('cors');
+
 require("dotenv/config");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 
 // allow JSON request bodies
 app.use(express.json());
@@ -19,9 +22,17 @@ app.get("/api/aot", (req, res) => {
 
   
     res.json({
-        character: aotInfo?.results[rand]
+       ...aotInfo?.results[rand]
     })
 })
+
+app.get("/api/image", async (req, res) => {
+  const url = req.query.url;
+  const response = await fetch(url);
+  const buffer = await response.arrayBuffer();
+  res.set("Content-Type", response.headers.get("content-type"));
+  res.send(Buffer.from(buffer));
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
