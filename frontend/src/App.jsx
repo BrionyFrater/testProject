@@ -112,18 +112,16 @@ function App() {
 
   useGSAP(()=>{
     gsap.from(charRef.current, {
-      duration: 1,
-      rotateZ: -0.5,
-      yoyo: true,
-      repeat: 2,
+      duration: 0.3,
+      y: -40,
+      scale: 0.8,
       ease: "sine.inOut"
     })
   }, {dependencies: [char], revertOnUpdate: true })
 
   const getCharacter = async () => {
     try {
-      //throw new Error("broo");
-
+ 
       const response = await fetch("http://localhost:5000/api/aot")
       
       if (!response.ok) throw new Error("I'm sorry we couldn't get your character.")
